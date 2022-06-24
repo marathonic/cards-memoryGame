@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import "./style.css";
+import React from "react";
+import Header from "./components/Header";
+import Cards from "./components/Cards";
+import getPics from "./components/getPics";
+import Card from "./components/Card";
 
 function App() {
+  const pics = getPics();
+  const mappedPics = pics.map((pic) => {
+    return <Card {...[pics]} />;
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <Header />
+      {/* <Card {...} /> */}
+      <div className="cards-section">{mappedPics}</div>
     </div>
   );
 }
