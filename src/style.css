@@ -14,32 +14,53 @@ body {
 }
 
 .app-container { 
-    height: 100vh;
     background-color: white;
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
 }
 
 .headr {
     background-color: var(--marvel-red);
+    background-color: #111132;
     color: white;
     font-family: 'BentonSans';
     display: flex;
     box-shadow: 00px 5px 5px gray;
     justify-content: center;
+    padding: 10px;
 }
 
 .headr > span {
     font-size: 6rem;
     margin: 10px;
+    padding: 6px;
     margin-bottom: 0;
+    border: solid white 5px;
 }
 
 .cards-section {
+    margin-top: 1.3rem;
     width: 100%;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     flex-wrap: wrap;
+}
+
+.card {
+    margin-left: 20px;
+}
+
+.card > img {
+    min-width: 9rem;
+    max-width: 18rem;
+    cursor: pointer;
+}
+
+.card > img:hover,
+.card > img:focus,
+.card > img:active {
+    filter: brightness(120%) drop-shadow(7px 7px 9px gray) contrast(95%);
 }
 
 .test-div {

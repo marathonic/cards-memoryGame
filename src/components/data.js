@@ -1,8 +1,15 @@
-import vraska from "vraska.png";
-
 const data = [
   {
-    image: vraska,
+    image: "vraska.png",
+    cardName: "vraska",
+  },
+  {
+    image: "stoneforge-mystic.jpg",
+    cardName: "stoneforge-mystic",
+  },
+  {
+    image: "elspeth.jpg",
+    cardName: "elspeth",
   },
 ];
 

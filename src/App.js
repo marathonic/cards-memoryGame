@@ -1,21 +1,16 @@
 import "./style.css";
 import React from "react";
 import Header from "./components/Header";
-import Cards from "./components/Cards";
-import getPics from "./components/getPics";
-import Card from "./components/Card";
+import Deck from "./components/Deck";
+import uniqid from "uniqid";
 
 function App() {
-  const pics = getPics();
-  const mappedPics = pics.map((pic) => {
-    return <Card {...[pics]} />;
-  });
-
   return (
     <div className="app-container">
       <Header />
-      {/* <Card {...} /> */}
-      <div className="cards-section">{mappedPics}</div>
+      <div className="cards-section">
+        <Deck />
+      </div>
     </div>
   );
 }
