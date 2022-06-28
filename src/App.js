@@ -14,15 +14,16 @@ function App() {
   const playCard = (nameOfCard) => {
     setPreviouslyPlayed((prevCards) => {
       const newArr = [];
-      checkHighScore();
 
       if (prevCards.includes(nameOfCard)) {
+        checkHighScore();
         console.log("played the same card twice");
         registerNewCard(false);
       } else {
         newArr.push(...prevCards, nameOfCard);
         registerNewCard(true);
       }
+
       return newArr;
     });
   };
@@ -31,11 +32,10 @@ function App() {
     isCardNew ? setScore((prevScore) => score + 1) : setScore(0);
   };
 
-  const checkHighScore = (latestScore) => {
+  const checkHighScore = () => {
     setHighScore((prevHighScore) => {
-      let currentScore = score;
-      if (currentScore > prevHighScore) {
-        return currentScore;
+      if (score >= prevHighScore) {
+        return score;
       } else {
         return prevHighScore;
       }

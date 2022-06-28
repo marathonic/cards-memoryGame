@@ -4,7 +4,9 @@ export default function ScoreBoard(props) {
 
   return (
     <div className="score-board">
-      <span>Score: {score}</span>
+      <div>
+        <span>Score: {score}</span>
+      </div>
       <div>
         <span>High score: {highScore}</span>
       </div>

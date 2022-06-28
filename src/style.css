@@ -7,6 +7,7 @@
 :root {
   --marvel-red: #ec1d24;
   --deep-blue: #111132;
+  font-family: "BentonSans";
   padding: 0;
 }
 
@@ -44,10 +45,11 @@ body {
 
 .score-board {
     display: flex;
+    justify-content: space-around;
     background-color: black;
     width: 100%;
     font-size: 4rem;
-    color: white;
+    color: lightgray;
 }
 
 .cards-section {
