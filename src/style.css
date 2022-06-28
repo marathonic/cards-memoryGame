@@ -1,77 +1,88 @@
-*, *::before, *::after {
-    box-sizing: border-box;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 :root {
-    --marvel-red: #EC1D24;
-    padding: 0;
+  --marvel-red: #ec1d24;
+  --deep-blue: #111132;
+  padding: 0;
 }
 
 body {
-    margin: 0;
-    background-color: beige;
-    min-height: 100vh;
+  margin: 0;
+  background-color: beige;
+  min-height: 100vh;
 }
 
-.app-container { 
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+.app-container {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .headr {
-    background-color: var(--marvel-red);
-    background-color: #111132;
-    color: white;
-    font-family: 'BentonSans';
-    display: flex;
-    box-shadow: 00px 5px 5px gray;
-    justify-content: center;
-    padding: 10px;
+  background-color: var(--marvel-red);
+  background-color: var(--deep-blue);
+  color: white;
+  font-family: "BentonSans";
+  display: flex;
+  box-shadow: 00px 5px 5px gray;
+  justify-content: center;
+  padding: 10px;
 }
 
 .headr > span {
-    font-size: 6rem;
-    margin: 10px;
-    padding: 6px;
-    margin-bottom: 0;
-    border: solid white 5px;
+  font-size: 6rem;
+  margin: 10px;
+  padding: 6px;
+  margin-bottom: 0;
+  border: solid white 5px;
+}
+
+.score-board {
+    display: flex;
+    background-color: black;
+    width: 100%;
+    font-size: 4rem;
+    color: white;
 }
 
 .cards-section {
-    margin-top: 1.3rem;
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
+  margin-top: 1.3rem;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
 
 .card {
-    margin-left: 20px;
+  margin-left: 20px;
 }
 
 .card > img {
-    min-width: 9rem;
-    max-width: 18rem;
-    cursor: pointer;
+  min-width: 9rem;
+  max-width: 18rem;
+  cursor: pointer;
 }
 
 .card > img:hover,
 .card > img:focus,
 .card > img:active {
-    filter: brightness(120%) drop-shadow(7px 7px 9px gray) contrast(95%);
+  filter: brightness(120%) drop-shadow(7px 7px 9px gray) contrast(95%);
 }
 
 .test-div {
-    background-color: skyblue;
-    width: 9rem;
-    height: 9rem;
-    border: 3px solid green;
-    margin: 1rem;
+  background-color: skyblue;
+  width: 9rem;
+  height: 9rem;
+  border: 3px solid green;
+  margin: 1rem;
 }
 
 @font-face {
-    font-family: BentonSans;
-    src: url(./fonts/BentonSans\ ExtraComp\ Black\ Regular.otf) format('opentype'); 
+  font-family: BentonSans;
+  src: url(./fonts/BentonSans\ ExtraComp\ Black\ Regular.otf) format("opentype");
 }

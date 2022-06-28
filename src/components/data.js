@@ -11,6 +11,10 @@ const data = [
     image: "elspeth.jpg",
     cardName: "elspeth",
   },
+  {
+    image: "frilled-mystic.jpg",
+    cardName: "frilled-mystic",
+  },
 ];
 
 export default data;
