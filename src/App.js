@@ -1,5 +1,5 @@
 import "./style.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./components/Header";
 import uniqid from "uniqid";
 import Card from "./components/Card";
@@ -10,6 +10,35 @@ function App() {
   const [previouslyPlayed, setPreviouslyPlayed] = useState([]);
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
+  const [randomDeck, setRandomDeck] = useState([]);
+
+  const getRandomDeck = () => {
+    setRandomDeck((prevRandomDeck) => {
+      // we COULD run it until it reaches data.length for easier adjustment later(slice right before mapping),
+      // but that would be less performant, since we only need a few cards at a time.
+
+      const newDeck = [];
+
+      for (let i = 0; newDeck.length < 3; i++) {
+        let randomNumber = Math.floor(Math.random() * data.length);
+        let cardObj = data[randomNumber];
+        if (newDeck.indexOf(cardObj) === -1) {
+          newDeck.push(cardObj);
+        }
+      }
+      return newDeck;
+      // while (newDeck.length < 3) {
+      //   let randomNumber = Math.floor(Math.random() * data.length);
+      //   let cardObj = data[randomNumber];
+
+      //   if (!prevRandomDeck.includes(cardObj)) {
+      //     newDeck.push({ ...cardObj, prevRandomDeck });
+      //   }
+      // }
+    });
+  };
+
+  useEffect(getRandomDeck, [score]);
 
   const playCard = (nameOfCard) => {
     setPreviouslyPlayed((prevCards) => {
@@ -42,7 +71,9 @@ function App() {
     });
   };
 
-  const myPics = data.map((obj) => {
+  // let randomData = getRandomDeck();
+
+  const myPics = randomDeck.map((obj) => {
     return (
       <Card
         picture={obj.image}
