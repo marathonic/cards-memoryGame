@@ -14,16 +14,22 @@ function App() {
 
   const getRandomDeck = () => {
     setRandomDeck((prevRandomDeck) => {
-      // we COULD run it until it reaches data.length for easier adjustment later(slice right before mapping),
-      // but that would be less performant, since we only need a few cards at a time.
-
+      //Make a deck where each card only shows up once
       const newDeck = [];
-
-      for (let i = 0; newDeck.length < 3; i++) {
+      for (let i = 0; newDeck.length < 4; i++) {
         let randomNumber = Math.floor(Math.random() * data.length);
         let cardObj = data[randomNumber];
         if (newDeck.indexOf(cardObj) === -1) {
           newDeck.push(cardObj);
+        }
+        //But what if all the cards shown on deck
+        //have been played before,
+        //while there's still unshown cards that didn't come up?
+        //The player would lose unfairly. Let's fix that.
+        //If new unshown cards, ensure at least 1 card on deck is new:
+        if (newDeck.length === 3) {
+          console.log(newDeck);
+          // if(newDeck.every(cardObject => ))
         }
       }
       return newDeck;
@@ -38,7 +44,7 @@ function App() {
     });
   };
 
-  useEffect(getRandomDeck, [score]);
+  useEffect(getRandomDeck, [previouslyPlayed]);
 
   const playCard = (nameOfCard) => {
     setPreviouslyPlayed((prevCards) => {
@@ -52,7 +58,7 @@ function App() {
         newArr.push(...prevCards, nameOfCard);
         registerNewCard(true);
       }
-
+      console.log(newArr);
       return newArr;
     });
   };

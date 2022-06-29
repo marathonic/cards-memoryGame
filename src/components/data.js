@@ -16,8 +16,20 @@ const data = [
     cardName: "frilled-mystic",
   },
   {
-    image: "gundam.png",
-    cardName: "gundam",
+    image: "opt.jpg",
+    cardName: "opt",
+  },
+  {
+    image: "sundering-titan.jpg",
+    cardName: "sundering-titan",
+  },
+  {
+    image: "god-pharaoh.jpg",
+    cardName: "god-pharaoh",
+  },
+  {
+    image: "terefi.jpg",
+    cardName: "terefi",
   },
 ];
 
