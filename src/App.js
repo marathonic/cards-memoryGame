@@ -11,36 +11,39 @@ function App() {
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
   const [randomDeck, setRandomDeck] = useState([]);
+  const [allPreviousCardObj, setAllPreviousCardObj] = useState([]);
 
   const getRandomDeck = () => {
     setRandomDeck((prevRandomDeck) => {
       //Make a deck where each card only shows up once
       const newDeck = [];
+      const cardNames = [];
       for (let i = 0; newDeck.length < 4; i++) {
         let randomNumber = Math.floor(Math.random() * data.length);
         let cardObj = data[randomNumber];
+        let cardName = cardObj.cardName;
+        //If still any unshown cards left, ensure at least 1 card on deck is new:
+        if (newDeck.length === 3) {
+          const checker = (arr, dataArr) =>
+            dataArr.every((obj) => arr.includes(obj.cardName));
+          if (checker(previouslyPlayed, data)) {
+            console.log("3 OF THESE HAVE BEEN PLAYED BEFORE");
+            //No we don't need to replace the last element, bc we're running the if statement when there's 1 spot left to fill.
+            //Actually, we still do want the stateful array, we need it to make sure the next card hasn't been played before.
+            // newDeck.splice(2, 1, newlyMinted); <-- need a stateful array like previouslyPlayed(but that records nameOfCard)
+            // but recording the names of the images instead, so that we can check if that stateful array includes it,
+            // and if that stateful array doesn't include it, then that means that card hasn't been played it, so it's new!
+            newDeck.push(
+              (obj) => previouslyPlayed.indexOf(obj.cardName) === -1
+            );
+          }
+        }
         if (newDeck.indexOf(cardObj) === -1) {
           newDeck.push(cardObj);
-        }
-        //But what if all the cards shown on deck
-        //have been played before,
-        //while there's still unshown cards that didn't come up?
-        //The player would lose unfairly. Let's fix that.
-        //If new unshown cards, ensure at least 1 card on deck is new:
-        if (newDeck.length === 3) {
-          console.log(newDeck);
-          // if(newDeck.every(cardObject => ))
+          cardNames.push(cardName);
         }
       }
       return newDeck;
-      // while (newDeck.length < 3) {
-      //   let randomNumber = Math.floor(Math.random() * data.length);
-      //   let cardObj = data[randomNumber];
-
-      //   if (!prevRandomDeck.includes(cardObj)) {
-      //     newDeck.push({ ...cardObj, prevRandomDeck });
-      //   }
-      // }
     });
   };
 
