@@ -96,6 +96,11 @@ body {
   margin: 1rem;
 }
 
+.winner > span{
+  font-size: 9rem;
+  letter-spacing: 9px;
+}
+
 @font-face {
   font-family: BentonSans;
   src: url(./fonts/BentonSans\ ExtraComp\ Black\ Regular.otf) format("opentype");
