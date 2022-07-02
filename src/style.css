@@ -46,10 +46,22 @@ body {
 .score-board {
     display: flex;
     justify-content: space-around;
+    align-items: center;
     background-color: black;
     width: 100%;
     font-size: 4rem;
     color: lightgray;
+    text-align: center;
+}
+
+.max-score {
+  width: 12%;
+  display: flex;
+  justify-content: center;
+}
+
+.max-score > span {
+  padding-left: 42%;
 }
 
 .cards-section {
@@ -88,3 +100,5 @@ body {
   font-family: BentonSans;
   src: url(./fonts/BentonSans\ ExtraComp\ Black\ Regular.otf) format("opentype");
 }
+
+/* remember to add media queries */

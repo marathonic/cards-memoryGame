@@ -31,6 +31,18 @@ const data = [
     image: "terefi.jpg",
     cardName: "terefi",
   },
+  {
+    image: "aetherborn.png",
+    cardName: "ambitious-aetherborn",
+  },
+  {
+    image: "wingsmith.png",
+    cardName: "weldfast-wingsmith",
+  },
+  {
+    image: "snapcaster.jpeg",
+    cardName: "snapcaster-mage",
+  },
 ];
 
 export default data;
