@@ -100,8 +100,10 @@ function App() {
       //We could return an object so that we don't have to [0][0].cardName in our getRandomDeck function
       //like so: return {...prevUnplayed, newUnplayed}. Let's put that on hold for now though
       unplayedArr.push(newUnplayed);
-      console.log("unplayedArr is: ");
-      console.table(unplayedArr); //<-- This DOES know the last card we just played, it doesn't show it as unplayed.
+      console.log("newUnplayed is: ");
+      console.table(newUnplayed); //<-- This DOES know the last card we just played, it doesn't show it as unplayed.
+      // console.log("unplayedArr is: ");
+      // console.table(unplayedArr); //<-- This DOES know the last card we just played, it doesn't show it as unplayed.
 
       //Because all previouslyPlayed cards come out at random, this array of unplayed cards will also be random.
       //Since we update previouslyPlayed {card1, card2, card3, etc...} when we click on a card,
@@ -118,7 +120,10 @@ function App() {
     setPreviouslyPlayed((prevCards) => {
       const newArr = [];
 
-      if (prevCards.includes(nameOfCard)) {
+      if (previouslyPlayed.length === data.length) {
+        console.log("you win");
+        return;
+      } else if (prevCards.includes(nameOfCard)) {
         checkHighScore();
         console.log("played the same card twice");
         registerNewCard(false);
@@ -148,6 +153,10 @@ function App() {
   // let randomData = getRandomDeck();
 
   const myPics = randomDeck.map((obj) => {
+    if (unplayedCards.length === 0 || previouslyPlayed.length === data.length) {
+      return false;
+    }
+
     return (
       <Card
         picture={obj.image}
