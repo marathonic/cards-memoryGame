@@ -12,7 +12,8 @@ function App() {
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
   const [randomDeck, setRandomDeck] = useState([]);
-
+  const [areCardsHidden, setCardsHidden] = useState(false);
+  const [nameInput, setNameInput] = useState("");
   const getRandomDeck = () => {
     setRandomDeck((prevRandomDeck) => {
       //Make a deck where each card only shows up once
@@ -44,6 +45,10 @@ function App() {
     });
   };
 
+  const handleCardsHidden = () => {
+    setCardsHidden(!areCardsHidden);
+  };
+
   function updateUnplayedCards() {
     //Ok so what our updateUnplayedCards function is doing is
     //it's logging all the cards that haven't been played yet.
@@ -61,6 +66,7 @@ function App() {
       ) {
         checkHighScore();
         registerNewCard(false);
+        handleCardsHidden();
         return ["FIRING UPDATE-UNPLAYED-CARDS AFTER SCORE IS MAX SCORE"];
       }
 
@@ -112,6 +118,10 @@ function App() {
     });
   };
 
+  const handleChange = (e) => {
+    setNameInput(e.target.value);
+  };
+
   // let randomData = getRandomDeck();
 
   const myPics = randomDeck.map((obj) => {
@@ -133,14 +143,22 @@ function App() {
     <div className="app-container">
       <Header />
       <ScoreBoard score={score} highScore={highScore} />
-      {unplayedCards.length > 0 && (
-        <div className="cards-section">{myPics}</div>
-      )}
-      {previouslyPlayed.length === data.length && (
-        <div className="winner">
-          <span>You win</span>
-        </div>
-      )}
+      <main>
+        {!areCardsHidden ? <div className="cards-section">{myPics}</div> : null}
+        {previouslyPlayed.length === data.length && (
+          <div className="winner">
+            <span>MAX</span>
+            <span>score</span>
+            <input
+              className="hs-input"
+              placeholder="Your Name"
+              onChange={handleChange}
+              value={nameInput}
+            ></input>
+            <button className="hs-btn">OK</button>
+          </div>
+        )}
+      </main>
     </div>
   );
 }
