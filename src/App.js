@@ -143,22 +143,20 @@ function App() {
     <div className="app-container">
       <Header />
       <ScoreBoard score={score} highScore={highScore} />
-      <main>
-        {!areCardsHidden ? <div className="cards-section">{myPics}</div> : null}
-        {previouslyPlayed.length === data.length && (
-          <div className="winner">
-            <span>MAX</span>
-            <span>score</span>
-            <input
-              className="hs-input"
-              placeholder="Your Name"
-              onChange={handleChange}
-              value={nameInput}
-            ></input>
-            <button className="hs-btn">OK</button>
-          </div>
-        )}
-      </main>
+      {!areCardsHidden ? <div className="cards-section">{myPics}</div> : null}
+      {previouslyPlayed.length === data.length && (
+        <div className="winner">
+          <span>MAX</span>
+          <span>score</span>
+          <input
+            className="hs-input"
+            placeholder="Your Name"
+            onChange={handleChange}
+            value={nameInput}
+          ></input>
+          <button className="hs-btn">OK</button>
+        </div>
+      )}
     </div>
   );
 }
