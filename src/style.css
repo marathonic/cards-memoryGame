@@ -116,10 +116,14 @@ main {
 }
 
 .winner {
-  display: flex;
   width: auto;
+  width: 36%;
+  height: 42rem;
+  display: flex;
+  justify-content: center;
   flex-direction: column;
   align-items: center;
+  align-self: center;
 }
 
 .winner > span{
