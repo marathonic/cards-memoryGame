@@ -19,7 +19,7 @@ export default function ScoreBoard(props) {
       <div>
         <span>High score: {highScore}</span>
         <span className="winner-name">
-          {nameInput !== "" ? ` (${nameInput})` : ""}
+          {nameInput !== null ? ` (${nameInput})` : ""}
         </span>
       </div>
     </div>

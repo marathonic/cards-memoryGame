@@ -5,16 +5,25 @@ import uniqid from "uniqid";
 import Card from "./components/Card";
 import data from "./components/data";
 import ScoreBoard from "./components/ScoreBoard";
+import Footer from "./components/Footer";
 
 function App() {
   const [previouslyPlayed, setPreviouslyPlayed] = useState([]);
   const [unplayedCards, setUnplayedCards] = useState([]);
   const [score, setScore] = useState(0);
-  const [highScore, setHighScore] = useState(0);
+  const [highScore, setHighScore] = useState(
+    sessionStorage.getItem("topScore") === null
+      ? 0
+      : sessionStorage.getItem("topScore") // MIGHT NOT BE THE RIGHT PLACE, WE GET NULL IF THERE'S NO HIGH SCORE.
+  );
   const [randomDeck, setRandomDeck] = useState([]);
   const [areCardsHidden, setCardsHidden] = useState(false);
   const [nameInput, setNameInput] = useState("");
-  const [passedName, setPassedName] = useState("");
+  const [recordHolder, setrecordHolder] = useState(
+    sessionStorage.getItem("recordHolderName") === null
+      ? 1
+      : sessionStorage.getItem("recordHolderName")
+  );
 
   const getRandomDeck = () => {
     setRandomDeck((prevRandomDeck) => {
@@ -111,12 +120,15 @@ function App() {
   };
 
   const handleSubmit = (e) => {
+    setrecordHolder(nameInput); // <--try this: pass recordHolder to the scoreBoard, instead of nameInput. That way, the name displays on load instead of displaying in real time (do we want that though?);
+    sessionStorage.setItem("recordHolderName", nameInput);
     window.location.reload();
   };
 
   const checkHighScore = () => {
     setHighScore((prevHighScore) => {
       if (score >= prevHighScore) {
+        sessionStorage.setItem("topScore", score);
         return score;
       } else {
         return prevHighScore;
@@ -148,7 +160,13 @@ function App() {
   return (
     <div className="app-container">
       <Header />
-      <ScoreBoard score={score} highScore={highScore} nameInput={nameInput} />
+      <ScoreBoard
+        score={score}
+        highScore={highScore}
+        nameInput={
+          recordHolder !== null && sessionStorage.getItem("recordHolderName")
+        }
+      />
       {!areCardsHidden ? <div className="cards-section">{myPics}</div> : null}
       {previouslyPlayed.length === data.length && (
         <div className="winner">
@@ -166,6 +184,7 @@ function App() {
           </form>
         </div>
       )}
+      <Footer />
     </div>
   );
 }

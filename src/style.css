@@ -175,6 +175,27 @@ main {
   background-color: gold;
 }
 
+.footr {
+  width: 100%;
+  height:2rem;
+  background-color: cadetblue;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.footr > span {
+  color: whitesmoke;
+  font-size: 2rem;
+}
+
+.footr > span:nth-of-type(2):hover {
+  color: gold;
+  cursor: pointer;
+}
+
 @font-face {
   font-family: BentonSans;
   src: url(./fonts/BentonSans\ ExtraComp\ Black\ Regular.otf) format("opentype");
