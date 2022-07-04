@@ -2,7 +2,7 @@ import React from "react";
 import data from "./data";
 
 export default function ScoreBoard(props) {
-  const { score, highScore } = props;
+  const { score, highScore, nameInput } = props;
 
   return (
     <div className="score-board">
@@ -18,6 +18,9 @@ export default function ScoreBoard(props) {
       </div> */}
       <div>
         <span>High score: {highScore}</span>
+        <span className="winner-name">
+          {nameInput !== "" ? ` (${nameInput})` : ""}
+        </span>
       </div>
     </div>
   );

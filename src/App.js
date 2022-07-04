@@ -14,6 +14,8 @@ function App() {
   const [randomDeck, setRandomDeck] = useState([]);
   const [areCardsHidden, setCardsHidden] = useState(false);
   const [nameInput, setNameInput] = useState("");
+  const [passedName, setPassedName] = useState("");
+
   const getRandomDeck = () => {
     setRandomDeck((prevRandomDeck) => {
       //Make a deck where each card only shows up once
@@ -108,6 +110,10 @@ function App() {
     isCardNew ? setScore((prevScore) => score + 1) : setScore(0);
   };
 
+  const handleSubmit = (e) => {
+    window.location.reload();
+  };
+
   const checkHighScore = () => {
     setHighScore((prevHighScore) => {
       if (score >= prevHighScore) {
@@ -142,19 +148,22 @@ function App() {
   return (
     <div className="app-container">
       <Header />
-      <ScoreBoard score={score} highScore={highScore} />
+      <ScoreBoard score={score} highScore={highScore} nameInput={nameInput} />
       {!areCardsHidden ? <div className="cards-section">{myPics}</div> : null}
       {previouslyPlayed.length === data.length && (
         <div className="winner">
           <span>MAX</span>
           <span>score</span>
-          <input
-            className="hs-input"
-            placeholder="Your Name"
-            onChange={handleChange}
-            value={nameInput}
-          ></input>
-          <button className="hs-btn">OK</button>
+          <form onSubmit={handleSubmit}>
+            <input
+              className="hs-input"
+              placeholder="Your Name"
+              onChange={handleChange}
+              value={nameInput}
+              name="high-score-input"
+            ></input>
+            <button className="hs-btn">OK</button>
+          </form>
         </div>
       )}
     </div>
