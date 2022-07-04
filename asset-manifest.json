@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/cards-memoryGame/static/css/main.18390409.css",
+    "main.js": "/cards-memoryGame/static/js/main.cb691f27.js",
+    "static/media/BentonSans ExtraComp Black Regular.otf": "/cards-memoryGame/static/media/BentonSans ExtraComp Black Regular.4c43fcdcdb24e984b734.otf",
+    "index.html": "/cards-memoryGame/index.html",
+    "main.18390409.css.map": "/cards-memoryGame/static/css/main.18390409.css.map",
+    "main.cb691f27.js.map": "/cards-memoryGame/static/js/main.cb691f27.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.18390409.css",
+    "static/js/main.cb691f27.js"
+  ]
+}
