@@ -5,7 +5,9 @@ const Footer = () => {
   return (
     <footer className="footr">
       <span>developer:</span>
-      <span>marathonic</span>
+      <span>
+        <a href="https://marathonic.github.io/portfolio"> marathonic </a>
+      </span>
     </footer>
   );
 };

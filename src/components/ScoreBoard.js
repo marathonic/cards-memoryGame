@@ -1,5 +1,6 @@
 import React from "react";
 import data from "./data";
+import "../style.css";
 
 export default function ScoreBoard(props) {
   const { score, highScore, nameInput } = props;
