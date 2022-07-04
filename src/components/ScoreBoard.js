@@ -1,5 +1,4 @@
 import React from "react";
-import data from "./data";
 import "../style.css";
 
 export default function ScoreBoard(props) {
@@ -10,13 +9,6 @@ export default function ScoreBoard(props) {
       <div>
         <span>Score: {score}</span>
       </div>
-      {/* <div className="max-score">
-        <span>
-          MAX
-          <br />
-          {data.length}
-        </span>
-      </div> */}
       <div>
         <span>High score: {highScore}</span>
         <span className="winner-name">

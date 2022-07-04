@@ -47,7 +47,6 @@ body {
   padding: 6px;
   margin-bottom: 0;
   border: solid white 5px;
-  cursor: pointer;
   text-decoration:underline var(--marvel-red);
 }
 

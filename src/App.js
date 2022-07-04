@@ -14,7 +14,7 @@ function App() {
   const [highScore, setHighScore] = useState(
     sessionStorage.getItem("topScore") === null
       ? 0
-      : sessionStorage.getItem("topScore") // MIGHT NOT BE THE RIGHT PLACE, WE GET NULL IF THERE'S NO HIGH SCORE.
+      : sessionStorage.getItem("topScore")
   );
   const [randomDeck, setRandomDeck] = useState([]);
   const [areCardsHidden, setCardsHidden] = useState(false);
@@ -42,12 +42,7 @@ function App() {
           if (
             newDeck.every((card) => previouslyPlayed.includes(card.cardName))
           ) {
-            // if (cardNames.every((card) => previouslyPlayed.includes(card))) {
-            console.log("3 OF THESE CARDS HAVE BEEN PLAYED BEFORE");
             //get a new card that isn't in the array
-            console.log("pulling a new card...");
-
-            console.log(unplayedCards[0]); //<--- this is just data.js, why?
             newDeck.push(unplayedCards[0][0]);
           }
         }
@@ -61,8 +56,6 @@ function App() {
   };
 
   function updateUnplayedCards() {
-    //Ok so what our updateUnplayedCards function is doing is
-    //it's logging all the cards that haven't been played yet.
     setUnplayedCards(() => {
       const unplayedArr = [];
       //Get all the cards in data whose names are not in the previouslyPlayed stateful array.
@@ -78,15 +71,10 @@ function App() {
         checkHighScore();
         registerNewCard(false);
         handleCardsHidden();
-        return ["FIRING UPDATE-UNPLAYED-CARDS AFTER SCORE IS MAX SCORE"];
+        return;
       }
 
-      //Should we spread out newUnplayed?
-      //We could return an object so that we don't have to [0][0].cardName in our getRandomDeck function
-      //like so: return {...prevUnplayed, newUnplayed}. Let's put that on hold for now though
       unplayedArr.push(newUnplayed);
-      console.log("newUnplayed is: ");
-      console.table(newUnplayed); //<-- This DOES know the last card we just played, it doesn't show it as unplayed.
       return unplayedArr;
     });
   }
@@ -99,18 +87,14 @@ function App() {
       const newArr = [];
 
       if (previouslyPlayed.length === data.length || score === data.length) {
-        console.log("you win");
-        newArr.push(...prevCards, "FIRING FROM PLAYCARD EVEN AT MAX SCORE");
+        newArr.push(...prevCards);
       } else if (prevCards.includes(nameOfCard)) {
         checkHighScore();
-        console.log("played the same card twice");
         registerNewCard(false);
       } else {
         newArr.push(...prevCards, nameOfCard);
         registerNewCard(true);
       }
-      console.log(newArr);
-      //OK SO WE'RE RETURNING
       return newArr;
     });
   };
@@ -120,7 +104,7 @@ function App() {
   };
 
   const handleSubmit = (e) => {
-    setrecordHolder(nameInput); // <--try this: pass recordHolder to the scoreBoard, instead of nameInput. That way, the name displays on load instead of displaying in real time (do we want that though?);
+    setrecordHolder(nameInput);
     sessionStorage.setItem("recordHolderName", nameInput);
     window.location.reload();
   };
@@ -139,8 +123,6 @@ function App() {
   const handleChange = (e) => {
     setNameInput(e.target.value);
   };
-
-  // let randomData = getRandomDeck();
 
   const myPics = randomDeck.map((obj) => {
     if (unplayedCards.length === 0 || previouslyPlayed.length === data.length) {
