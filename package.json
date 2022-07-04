@@ -1,5 +1,6 @@
 {
   "name": "memory-card",
+  "homepage": "https://marathonic.github.io/cards-memoryGame",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

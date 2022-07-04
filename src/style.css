@@ -80,7 +80,6 @@ main {
 }
 
 .cards-section {
-  /* margin-top: 1.3rem; */
   width: 100%;
   min-height: max-content;
   display: flex;
