@@ -82,12 +82,12 @@ main {
 .cards-section {
   /* margin-top: 1.3rem; */
   width: 100%;
-  min-height: 36rem;
+  min-height: max-content;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  
+  margin-top: 3rem;  
 }
 
 .card {
@@ -206,3 +206,61 @@ main {
 }
 
 /* remember to add media queries */
+
+@media only screen and (orientation:portrait) {
+  body {
+    height: 100vh;
+    transform: rotate(90deg);
+  }
+}
+
+@media only screen and (max-width: 900px) {
+
+  body {
+    max-width: 100%;
+  }
+
+  .headr,
+  .score-board {
+    max-width: 100%;
+  }
+
+  .headr > span {
+    font-size: 2rem;
+    
+  }
+
+  .score-board > div {
+    flex: 1;
+    font-size: 2rem;
+  }
+
+  .app-container,
+  .cards-section {
+    max-height: 200px;
+    max-height: max-content;
+  }
+  
+  .cards-section {
+    align-items: flex-start;
+    max-width: 70%;
+    height: max-content;
+    flex-wrap: nowrap;
+    text-align: center;
+    margin-left: 16%;
+  }
+  
+  .card{
+    margin-left: 0;
+    max-width: max-content;
+  }
+
+  .card > img {
+    max-width: 5%;
+  }  
+
+  .footr {
+    position: absolute;
+    bottom: 0;
+  }
+}
